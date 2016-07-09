@@ -2,7 +2,7 @@ const http = require('http');
 const url = require('url');
 
 const hostname = '127.0.0.1';
-const port = 80;
+const port = 3000;
 
 const makeRequest = (host, path)=> {
   return new Promise((resolve, reject) => {
@@ -14,13 +14,12 @@ const makeRequest = (host, path)=> {
     };
 
     let req = http.request(options, (res) => {
-      let data;
+      let data = '';
       res.setEncoding('utf8');
       res.on('data', (chunk) => {
         data += chunk;
       });
       res.on('end', () => {
-        console.log(data)
         resolve(data);
       })
     });
@@ -36,7 +35,7 @@ const makeRequest = (host, path)=> {
 const server = http.createServer((req, res) => {
 
   let url_parts = url.parse(req.url, true).query.target;
-  let target_url = url.parse(url_parts);
+  let target_url = url.parse(url_parts, true);
 
   let host = target_url.hostname;
   let path = target_url.path;
@@ -44,13 +43,11 @@ const server = http.createServer((req, res) => {
   if(url_parts) {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'application/json');
-    res.end('fnit')
-    /*
     makeRequest(host, path).then((value) => {
       res.end(value);
+      res.end('fnit')
       console.log(value)
     });
-    */
   }
   else {
     res.statusCode = 404;
