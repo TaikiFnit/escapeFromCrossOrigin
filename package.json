@@ -2,6 +2,8 @@
   "name": "fnit",
   "version": "0.0.1",
   "dependencies": {
+    "http": "*",
+    "url": "*"
   },
   "engines": {
     "node": "6.x"
