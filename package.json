@@ -1,0 +1,12 @@
+{
+  "name": "fnit",
+  "version": "0.0.1",
+  "dependencies": {
+  },
+  "engines": {
+    "node": "6.x"
+  },
+  "script": {
+    "start": "node app.js"
+  }
+}
