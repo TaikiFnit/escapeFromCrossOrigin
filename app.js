@@ -1,7 +1,7 @@
 const http = require('http');
 const url = require('url');
 
-const hostname = 'safe-fortress-15244.herokuapp.com';
+const hostname = '127.0.0.1';
 const port = 80;
 
 const makeRequest = (host, path)=> {
